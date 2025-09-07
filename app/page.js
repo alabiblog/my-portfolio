@@ -1,103 +1,137 @@
+ "use client"
+
+import { db } from "@/config/firebase.config";
+import { Button, TextField } from "@mui/material";
+import { addDoc, collection } from "firebase/firestore";
+import { Formik, useFormik } from "formik";
 import Image from "next/image";
+import Link from "next/link";
+import { RxHamburgerMenu } from "react-icons/rx";
+import * as yup from "yup"
+import {useSession} from "next-auth/react"
+
+const schema = yup.object().shape({
+  fullName: yup.string().required("Name Is Required"),
+  email: yup.string().required("Email Is Required"),
+  message: yup.string().required("Message Is Required"),
+})
 
 export default function Home() {
+  const {data : session} = useSession();
+  console.log(session)
+  const {handleBlur,handleChange,handleSubmit,touched,errors,values} =useFormik({
+      initialValues: {
+        fullName: "",
+        email: "",
+        message: "",
+      },
+      onSubmit:async (values,{resetForm})=>{
+        await addDoc (collection(db,"user-comments"),{
+          user:session?.user?.id || null,
+          fullName: values.fullName,
+          email: values.email,
+          message: values.message,
+          timeCreated: new Date().getTime(),
+        }).then(()=>{
+          alert("You Have Submitted Succefully")
+          resetForm()
+        })
+        .catch((error)=>{
+          console.error
+          alert("Unable To Submit")
+        })
+          
+      },
+      validationSchema: schema 
+  })
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    
+     <main className="min-h-screen max-w-screen">
+            <div className="md:flex  md:relative">
+                <div className="h-170 bg-blue-700  justify-center p-2 justify-between md:h-170 md:w-265 lg:h-150  lg:w-250">
+                 <h1 className="text-5xl p-10 text-lime-300 font-bold md:p-20">Full Stack<br/>Developer<span className="text-white text-2xl font-bold">•</span></h1>
+                 <h1 className="p-10 text-white font-semibold md:p-20">Proffesional Full-Stack Website Developer Specializing In Building Fast,Scable, And User Friendly Application I Work With Both Front-end And Back-end Technologies  To Deliver Complete Digital Solution And Take Your Business To The Global Level !!!</h1>
+                 <div className="grid grid-cols-2 p-10 md:p-0 md:ml-20">
+                  <h1 className="text-sm text-lime-300">I Help Businesses<br/> Turn Ideas Into Powerful Websites And Application<br/>That Drives Result</h1>
+                  <h1 className="text-sm text-lime-300">My Focus Is Always On Quality,Performance And Client Satisfaction</h1>
+                 </div>
+                 </div>
+                <div className="h-95 bg-lime-300 md:h-170 md:w-110 lg:h-150 lg:w-110">
+                  <div className="flex justify-center py-10 ">
+                 <Image
+                width={90}
+                height={90}
+                src={"/myprofile.jpg"}
+                alt="profile"
+                className=" h-60 w-50 md:h-60 md:w-70 md:absolute md:top-15 md:right-25 lg:top-15 lg:right-70"/>
+                </div>
+               </div>
+            </div>
+            <div className="md:flex lg:flex md:py-5">
+               <div className="border-b-2 shadow-lg h-80 py-2 mx-4 md:w-full lg:w-full md:h-140 lg:h-140">
+                <h1 className="text-2xl font-bold text-blue-700 p-10 lg:p-20 md:p-20">Here´s a Projext I Have Built Using<br/>React and Node.js.</h1>
+                <Link href={"/components/project"} ><button className="border p-3 text-blue-700 ml-10 mt-10 py-5 lg:ml-20 md:ml-20 cursor-pointer hover:bg-lime-300 hover:shadow-lg shadow-blue-700">See My Work →</button></Link>
+               </div>
+               <div className="shadow-lg h-80  mx-4 md:w-full lg:w-full md:h-140 lg:h-140">
+                  <h1 className="text-2xl font-bold text-blue-700 p-10 lg:p-20 md:p-20">View<br/>Reśume</h1>
+                <button className="border p-3 text-blue-700 ml-10 mt-20 md:mt-10 lg:mt-10 py-5 lg:ml-20 md:ml-20 cursor-pointer hover:bg-lime-300 hover:shadow-lg shadow-blue-700">See My Reśume →</button>
+               </div>
+            </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
-}
+            <div className="">
+               <h1 className="text-2xl mt-25 ml-10 font-semibold md:text-5xl lg:text-5xl text-blue-700 md:font-bold lg:font-bold md:text-center lg:text-center">Send me a<br/> message<span> ‼ </span></h1>
+              <p className="text-sm ml-10 mt-3 font-semibold md:text-center lg:text-center md:text-lg lg:text-lg">Got a question or proposal, or just<br/>want to say hello? go ahead.</p>
+              
+              
+              <form onSubmit={handleSubmit} className="ml-10 mt-15 md:text-center" >
+             <div>
+              <TextField
+              placeholder="Enter Your Name"
+              label="Enter Your Name"
+              type="text"
+              InputLabelProps={{shrink:true}}
+              id="fullName"
+              className=" md:w-180 lg:w-180"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.fullName}/>
+              {touched.fullName && errors.fullName ? <span className="text-xs text-red-700">{errors.fullName}</span> : null}
+             </div>
+             <div className="mt-7">
+              <TextField
+              placeholder="Enter Your Email"
+              label="Enter Your Email"
+              type="email"
+              InputLabelProps={{shrink:true}}
+              id="email"
+              className="md:w-180 lg:w-180"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.email}/>
+              {touched.email && errors.email ? <span className="text-xs text-red-700">{errors.email}</span> : null}
+             </div>
+             <div className="mt-7">
+              <TextField
+              placeholder="Hi i think we need  a proffesional website for our business or Company. How soon can we hope on you to get it done?."
+              label="Your Message"
+              type="text"
+              multiline
+              rows={7}
+              InputLabelProps={{shrink:true}}
+              id="message"
+              className="md:w-180 lg:w-180"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.message}/>
+              {touched.message && errors.email ? <span className="text-xs text-red-700">{errors.email}</span> : null}
+              </div>
+              <div className="my-3">
+              <button type="submit" className="border p-2 w-30 text-blue-700 bg-lime-300 font-bold m:w-50 lg:w-50 hover:text-lime-300 hover:bg-blue-700 rounded">Send</button>
+              </div>
+             </form>
+            
+             </div>
+            
+        </main>
+    ); 
+  }

@@ -28,8 +28,8 @@ export function Navbar(){
             </div>
            
             </div>
-            <div
-            className={`fixed top-0 right-0 h-40 w-64 bg-blue-700 lg:bg-lime-300 md:bg-lime-300 lg:w-77 lg:h-40  xl:w-96 duration-6000 ease-in-out ${visible? "translate-x-0" : "translate-x-full"}`}>
+           <div      
+            className={`fixed top-0 right-0 h-40 w-64 bg-blue-700 lg:bg-lime-300 md:bg-lime-300 lg:w-77 lg:h-40  xl:w-96 duration-2000 ease-in-out ${visible? "translate-x-0" : "translate-x-full"}`}>
              <button onClick={()=>setVisible(false)} className="text-4xl font-bold absolute right-10 top-10">✕</button>
             <div className="p-5">
             <Link href={"/"}><p className="text-lime-300 font-bold md:text-blue-700">Home</p></Link>

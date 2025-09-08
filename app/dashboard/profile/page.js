@@ -1,5 +1,10 @@
-import { auth } from "firebase-admin";
+
+
+import { auth } from "@/auth";
 import Image from "next/image";
+
+
+
 
 
 export default async function Profile(){
@@ -16,8 +21,8 @@ export default async function Profile(){
            className="h-20 w-20 rounded-full"/>
            </div>
            <p className="text-center border-b mt-5">{session?.user?.name}</p>
-           <p className="text-center border-b mt-5">{session?.user?.name}</p>
-           <p className="text-center border-b mt-5">User ID: {session?.user?.name}</p>
+           <p className="text-center border-b mt-5">{session?.user?.email}</p>
+           <p className="text-center border-b mt-5">User ID: {session?.user?.id}</p>
         </main>
     )
 }

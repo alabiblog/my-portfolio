@@ -16,7 +16,7 @@ export default async function Profile(){
            <Image
            width={30}
            height={30}
-           src={"/myprofile.jpg"}
+           src={session?.user?.image}
            alt="profile"
            className="h-20 w-20 rounded-full"/>
            </div>

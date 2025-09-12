@@ -1,7 +1,7 @@
  "use client"
 
 import { db } from "@/config/firebase.config";
-import { Button, TextField } from "@mui/material";
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, Typography } from "@mui/material";
 import { addDoc, collection } from "firebase/firestore";
 import { Formik, useFormik } from "formik";
 import Image from "next/image";
@@ -9,6 +9,9 @@ import Link from "next/link";
 import { RxHamburgerMenu } from "react-icons/rx";
 import * as yup from "yup"
 import {useSession} from "next-auth/react"
+import { useState } from "react";
+
+
 
 const schema = yup.object().shape({
   fullName: yup.string().required("Name Is Required"),
@@ -17,8 +20,12 @@ const schema = yup.object().shape({
 })
 
 export default function Home() {
+  const [open,setOpen]= useState(false)
   const {data : session} = useSession();
   console.log(session)
+  const handleClose = ()=>{
+    setOpen(false)
+  }
   const {handleBlur,handleChange,handleSubmit,touched,errors,values} =useFormik({
       initialValues: {
         fullName: "",
@@ -33,11 +40,11 @@ export default function Home() {
           message: values.message,
           timeCreated: new Date().getTime(),
         }).then(()=>{
-          alert("You Have Submitted Succefully")
+          setOpen(true)
           resetForm()
         })
         .catch((error)=>{
-          console.error
+          setOpen(false)
           alert("Unable To Submit")
         })
           
@@ -129,8 +136,24 @@ export default function Home() {
               <button type="submit" className="border p-2 w-30 text-blue-700 bg-lime-300 font-bold m:w-50 lg:w-50 hover:text-lime-300 hover:bg-blue-700 rounded">Send</button>
               </div>
              </form>
-            
+            </div>
+            <Dialog open={open} onClose={handleClose}>
+              <DialogTitle>Success</DialogTitle>
+              <DialogContent>
+                <Typography>Message Submitted Succefully</Typography>
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={handleClose} color="primary" variant="contained" autoFocus>Close</Button>
+              </DialogActions>
+
+            </Dialog>
+
+
+
+             <div className="relative h-64 bg-lime-300  clip-wave">
+
              </div>
+
             
         </main>
     ); 

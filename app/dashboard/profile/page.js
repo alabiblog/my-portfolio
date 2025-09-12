@@ -1,7 +1,9 @@
 
 
-import { auth } from "@/auth";
+import { auth, signOut } from "@/auth";
+import { Button } from "@mui/material";
 import Image from "next/image";
+
 
 
 
@@ -23,6 +25,14 @@ export default async function Profile(){
            <p className="text-center border-b mt-5">{session?.user?.name}</p>
            <p className="text-center border-b mt-5">{session?.user?.email}</p>
            <p className="text-center border-b mt-5">User ID: {session?.user?.id}</p>
+           <form
+           action={async()=>{
+            "use server"
+            await signOut()
+           }}>
+           
+            <Button fullWidth color="error" type="submit">LogOut</Button>
+           </form>
         </main>
     )
 }

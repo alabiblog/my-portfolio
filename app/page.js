@@ -81,7 +81,7 @@ export default function Home() {
                </div>
                <div className="shadow-lg h-80  mx-4 md:w-full lg:w-full md:h-140 lg:h-140">
                   <h1 className="text-2xl font-bold text-blue-700 p-10 lg:p-20 md:p-20">View<br/>Reśume</h1>
-                <button className="border p-3 text-blue-700 ml-10 mt-20 md:mt-10 lg:mt-10 py-5 lg:ml-20 md:ml-20 cursor-pointer hover:bg-lime-300 hover:shadow-lg shadow-blue-700">See My Reśume →</button>
+                <Link href={"/components/resume"}><button className="border p-3 text-blue-700 ml-10 mt-20 md:mt-10 lg:mt-10 py-5 lg:ml-20 md:ml-20 cursor-pointer hover:bg-lime-300 hover:shadow-lg shadow-blue-700">See My Reśume →</button></Link>
                </div>
             </div>
 

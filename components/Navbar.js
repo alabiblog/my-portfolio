@@ -36,6 +36,7 @@ export function Navbar(){
             <Link href={"/"} onClick={()=>setVisible(false)}><p className="text-lime-300 font-bold md:text-blue-700">Home</p></Link>
             <Link href={"/components/project"} onClick={()=>setVisible(false)}><p className="text-lime-300 font-bold md:text-blue-700">Few Of My Work</p></Link>
             <Link href={"/components/resume"} onClick={()=>setVisible(false)}><p className="text-lime-300 font-bold md:text-blue-700">My Reśume</p></Link>
+            <Link href={"/components/aboutme"} onClick={()=>setVisible(false)}><p className="text-lime-300 font-bold md:text-blue-700">About Me</p></Link>
             <Link href={"/auth/login"} onClick={()=>setVisible(false)}><p className="text-lime-300 font-bold md:text-blue-700">Login</p></Link>
             <Link href={"/dashboard/profile"} onClick={()=>setVisible(false)}><p className="text-lime-300 font-bold md:text-blue-700 text-2xl mt-2 lg:absolute lg:top-1 lg:right-2"><CgProfile /></p></Link>
             

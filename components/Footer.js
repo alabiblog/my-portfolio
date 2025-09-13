@@ -11,7 +11,8 @@ export function Footer(){
               <h1 className="ml-10 text-sm text-white">jimohsherif000@gmail.com</h1>
               <h1 className="ml-10 text-sm text-white mt-5">WhatsApp Me</h1>
             <Link href={"/components/project"} ><h1 className="ml-10 text-sm text-white mt-20">Few Of My Works</h1></Link>
-              <h1 className="ml-10 text-sm text-white mt-5">My Resume</h1>
+              <Link href={"/components/resume"}><h1 className="ml-10 text-sm text-white mt-5">My Resume</h1></Link>
+              <Link href={"/components/aboutme"}><h1 className="ml-10 text-sm text-white mt-5">About Me</h1></Link>
 
               <hr className="border-2 text-lime-300 mt-10 mx-10"/>
               <p className="text-lime-300 p-10">© Jimoh Sherif {year} </p>

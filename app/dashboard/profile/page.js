@@ -7,11 +7,8 @@ import Image from "next/image";
 
 
 
-
-
 export default async function Profile(){
     const session = await auth();
-    console.log(session)
     return(
         <main className="min-h-screen shadow-xl mx-10 my-10 lg:mx-50 xl:mx-100">
             <div className="flex justify-center mt-3">
@@ -29,7 +26,7 @@ export default async function Profile(){
            action={async()=>{
             "use server"
             await signOut()
-           }}>
+           }} className="mt-5">
            
             <Button fullWidth color="error" type="submit">LogOut</Button>
            </form>

@@ -13,6 +13,9 @@ import { useState } from "react";
 
 
 
+ 
+
+
 const schema = yup.object().shape({
   fullName: yup.string().required("Name Is Required"),
   email: yup.string().required("Email Is Required"),
@@ -22,7 +25,6 @@ const schema = yup.object().shape({
 export default function Home() {
   const [open,setOpen]= useState(false)
   const {data : session} = useSession();
-  console.log(session)
   const handleClose = ()=>{
     setOpen(false)
   }
@@ -52,12 +54,14 @@ export default function Home() {
       validationSchema: schema 
   })
   return (
+   
+
     
      <main className="min-h-screen max-w-screen">
             <div className="md:flex  md:relative">
                 <div className="h-170 bg-blue-700  justify-center p-2 justify-between md:h-170 md:w-265 lg:h-150  lg:w-250">
-                 <h1 className="text-5xl p-10 text-lime-300 font-bold md:p-20">Full Stack<br/>Developer<span className="text-white text-2xl font-bold">•</span></h1>
-                 <h1 className="p-10 text-white font-semibold md:p-20">Proffesional Full-Stack Website Developer Specializing In Building Fast,Scable, And User Friendly Application I Work With Both Front-end And Back-end Technologies  To Deliver Complete Digital Solution And Take Your Business To The Global Level !!!</h1>
+                 <h1  className="text-5xl p-10 text-lime-300 font-bold md:p-20">Full Stack<br/>Developer<span className="text-white text-2xl font-bold">•</span></h1>
+                 <h1  className="p-10 text-white font-semibold md:p-20">Proffesional Full-Stack Website Developer Specializing In Building Fast,Scable, And User Friendly Application I Work With Both Front-end And Back-end Technologies  To Deliver Complete Digital Solution And Take Your Business To The Global Level !!!</h1>
                  <div className="grid grid-cols-2 p-10 md:p-0 md:ml-20">
                   <h1 className="text-sm text-lime-300">I Help Businesses<br/> Turn Ideas Into Powerful Websites And Application<br/>That Drives Result</h1>
                   <h1 className="text-sm text-lime-300">My Focus Is Always On Quality,Performance And Client Satisfaction</h1>
@@ -76,7 +80,7 @@ export default function Home() {
             </div>
             <div className="md:flex lg:flex md:py-5">
                <div className="border-b-2 shadow-lg h-80 py-2 mx-4 md:w-full lg:w-full md:h-140 lg:h-140">
-                <h1 className="text-2xl font-bold text-blue-700 p-10 lg:p-20 md:p-20">Here´s a Projext I Have Built Using<br/>React and Node.js.</h1>
+                <h1  className="text-2xl font-bold text-blue-700 p-10 lg:p-20 md:p-20">Here´s a Projext I Have Built Using<br/>React and Node.js.</h1>
                 <Link href={"/components/project"} ><button className="border p-3 text-blue-700 ml-10 mt-10 py-5 lg:ml-20 md:ml-20 cursor-pointer hover:bg-lime-300 hover:shadow-lg shadow-blue-700">See My Work →</button></Link>
                </div>
                <div className="shadow-lg h-80  mx-4 md:w-full lg:w-full md:h-140 lg:h-140">
@@ -86,8 +90,8 @@ export default function Home() {
             </div>
 
             <div className="">
-               <h1 className="text-2xl mt-25 ml-10 font-semibold md:text-5xl lg:text-5xl text-blue-700 md:font-bold lg:font-bold md:text-center lg:text-center">Send me a<br/> message<span> ‼ </span></h1>
-              <p className="text-sm ml-10 mt-3 font-semibold md:text-center lg:text-center md:text-lg lg:text-lg">Got a question or proposal, or just<br/>want to say hello? go ahead.</p>
+               <h1  className="text-2xl mt-25 ml-10 font-semibold md:text-5xl lg:text-5xl text-blue-700 md:font-bold lg:font-bold md:text-center lg:text-center">Send me a<br/> message<span> ‼ </span></h1>
+              <p  className="text-sm ml-10 mt-3 font-semibold md:text-center lg:text-center md:text-lg lg:text-lg">Got a question or proposal, or just<br/>want to say hello? go ahead.</p>
               
               
               <form onSubmit={handleSubmit} className="ml-10 mt-15 md:text-center" >

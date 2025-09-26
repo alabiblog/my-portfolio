@@ -25,10 +25,10 @@ export default function Project(){
              </div>
               <div className="w-100  mx-2 mt-5  md:mt-0 lg:mt-0 lg:w-97 shadow-xl h-80 bg-white lg:w-80 xl:w-100">
                 <div className="w-full h-50 shadow-xl bg-gray-200">
-                   <h1 className="text-center py-17 text-3xl">UNDER BUILDING</h1>
+                   <h1 className="text-center py-17 text-3xl">REALTORS</h1>
                 </div>
                   <h1 className="font-semibold ml-7 mt-7">Personal Website</h1>
-                  <Link href={"/#cancel"} className="ml-7 mt-7 text-blue-700">jimoh.sherif</Link>
+                  <Link href={"https://realtors-six.vercel.app/"} className="ml-7 mt-7 text-blue-700">www.realtors</Link>
              </div>
               <div className="mx-2 mt-5 w-100 shadow-xl h-80 bg-white md:mt-3 lg:mt-3 lg:w-80 xl:w-100">
                 <div className="w-full h-50 shadow-xl bg-gray-200">

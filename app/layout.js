@@ -5,6 +5,8 @@ import { Footer } from "@/components/Footer";
 import { SessionProvider } from "next-auth/react";
 
 
+
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],

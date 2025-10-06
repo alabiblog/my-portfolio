@@ -5,7 +5,7 @@ export default function Resume(){
               <h1 className="p-5 text-2xl font-bold">/My Reśume</h1>
               <h1 className="text-lg font-semibold mt-10 ml-5">JIMOH SHERIF</h1>
               <p className="font-semibold ml-5 mt-3 text-lime-300">Country :<span className="text-sm text-black ">Nigeria</span></p>
-              <p className="font-semibold ml-5 mt-3 text-lime-300">Email : <span className="text-sm text-black "> jimohsherif00@gmail.com</span></p>
+              <p className="font-semibold ml-5 mt-3 text-lime-300">Email : <span className="text-sm text-black "> jimohsherif000@gmail.com</span></p>
               <p className="font-semibold ml-5 mt-3 text-lime-300">Tel : <span className="text-sm text-black "> +234 9030501762 / 9121120720</span></p>
               <p className="font-semibold ml-5 mt-3 text-lime-300">Linkedln : <span className="text-sm text-black ">UserName</span></p>
               <h1 className="mt-10 ml-5 text-2xl font-bold">Professional Summary </h1>

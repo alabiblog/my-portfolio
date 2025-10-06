@@ -57,7 +57,7 @@ export default function Home() {
    
 
     
-     <main className="min-h-screen max-w-screen">
+     <main className="min-h-screen max-w-screen bg-white/60">
             <div className="md:flex  md:relative">
                 <div className="h-170 bg-blue-700  justify-center p-2 justify-between md:h-170 md:w-265 lg:h-150  lg:w-250">
                  <h1  className="text-5xl p-10 text-lime-300 font-bold md:p-20">Full Stack<br/>Developer<span className="text-white text-2xl font-bold">•</span></h1>
